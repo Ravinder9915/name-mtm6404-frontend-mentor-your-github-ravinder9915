@@ -1,0 +1,260 @@
+:root {
+    --soft-orange: hsl(35, 77%, 62%);
+    --soft-red: hsl(5, 85%, 63%);
+    --off-white: hsl(36, 100%, 99%);
+    --grayish-blue: hsl(233, 8%, 79%);
+    --dark-grayish-blue: hsl(236, 13%, 42%);
+    --very-dark-blue: hsl(240, 100%, 5%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--off-white);
+    color: var(--very-dark-blue);
+    line-height: 1.6;
+    padding: 1.5rem;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 45px;
+    height: 28px;
+}
+
+.nav-list {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--dark-grayish-blue);
+    font-size: 0.9375rem;
+    transition: color 0.3s;
+}
+
+.nav-list a:hover {
+    color: var(--soft-red);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-close {
+    display: none;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.hero-text p {
+    color: var(--dark-grayish-blue);
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--soft-red);
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.75rem 2rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--very-dark-blue);
+}
+
+.new-articles {
+    background-color: var(--very-dark-blue);
+    padding: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.new-articles h2 {
+    color: var(--soft-orange);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.new-articles article {
+    padding: 1.5rem 0;
+}
+
+.new-articles article:not(:last-child) {
+    border-bottom: 1px solid var(--dark-grayish-blue);
+}
+
+.new-articles h3 {
+    color: var(--off-white);
+    margin-bottom: 0.5rem;
+}
+
+.new-articles h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.new-articles h3 a:hover {
+    color: var(--soft-orange);
+}
+
+.new-articles p {
+    color: var(--grayish-blue);
+    font-size: 0.9375rem;
+}
+
+.top-articles {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.top-articles article {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.top-articles img {
+    width: 100px;
+    height: 127px;
+    object-fit: cover;
+}
+
+.top-articles span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--grayish-blue);
+    margin-bottom: 0.75rem;
+}
+
+.top-articles h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.top-articles h4 a {
+    color: var(--very-dark-blue);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.top-articles h4 a:hover {
+    color: var(--soft-red);
+}
+
+.top-articles p {
+    color: var(--dark-grayish-blue);
+    font-size: 0.9375rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+@media (min-width: 768px) {
+    .hero {
+        grid-template-columns: 2fr 1fr;
+        gap: 1.875rem;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .top-articles {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .mobile-menu-toggle {
+        display: block;
+        z-index: 1000;
+    }
+
+    .nav-list {
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        padding: min(30vh, 10rem) 2rem;
+        background: var(--off-white);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-out;
+    }
+
+    .nav-list[data-visible="true"] {
+        transform: translateX(0%);
+    }
+
+    .nav-list[data-visible="true"] + .mobile-menu-toggle .menu-open {
+        display: none;
+    }
+
+    .nav-list[data-visible="true"] + .mobile-menu-toggle .menu-close {
+        display: block;
+    }
+}
